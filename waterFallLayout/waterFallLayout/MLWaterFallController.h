@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MLWaterFallController.h
 //  waterFallLayout
 //
 //  Created by 李明禄 on 15/11/4.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface MLWaterFallController : UICollectionViewController
 
 @end
-
