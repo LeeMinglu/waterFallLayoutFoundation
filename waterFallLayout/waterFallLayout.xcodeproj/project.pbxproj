@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A4359051BEAF3BE0040D00B /* clothes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A4359041BEAF3BE0040D00B /* clothes.plist */; };
+		1A4359081BEAF8330040D00B /* MLClothesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4359071BEAF8330040D00B /* MLClothesViewController.m */; };
+		1A43590E1BEAFEB00040D00B /* MLWaterFallFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A43590D1BEAFEB00040D00B /* MLWaterFallFlowLayout.m */; };
 		1A5C28C41BEA331B009F140B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C28BC1BEA331B009F140B /* AppDelegate.m */; };
 		1A5C28C51BEA331B009F140B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A5C28BD1BEA331B009F140B /* Assets.xcassets */; };
 		1A5C28C61BEA331B009F140B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A5C28BE1BEA331B009F140B /* LaunchScreen.storyboard */; };
@@ -54,10 +57,14 @@
 		1AED0EC41BEA445D00415A27 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED0E991BEA445D00415A27 /* UIImageView+HighlightedWebCache.m */; };
 		1AED0EC51BEA445D00415A27 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED0E9B1BEA445D00415A27 /* UIImageView+WebCache.m */; };
 		1AED0EC61BEA445D00415A27 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED0E9D1BEA445D00415A27 /* UIView+WebCacheOperation.m */; };
-		1AED0EC91BEA451E00415A27 /* MLWaterFallController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AED0EC81BEA451E00415A27 /* MLWaterFallController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A4359041BEAF3BE0040D00B /* clothes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = clothes.plist; sourceTree = "<group>"; };
+		1A4359061BEAF8330040D00B /* MLClothesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLClothesViewController.h; sourceTree = "<group>"; };
+		1A4359071BEAF8330040D00B /* MLClothesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLClothesViewController.m; sourceTree = "<group>"; };
+		1A43590C1BEAFEB00040D00B /* MLWaterFallFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLWaterFallFlowLayout.h; sourceTree = "<group>"; };
+		1A43590D1BEAFEB00040D00B /* MLWaterFallFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLWaterFallFlowLayout.m; sourceTree = "<group>"; };
 		1A5C289F1BEA30E5009F140B /* waterFallLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = waterFallLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A5C28BB1BEA331B009F140B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1A5C28BC1BEA331B009F140B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -150,8 +157,6 @@
 		1AED0E9B1BEA445D00415A27 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		1AED0E9C1BEA445D00415A27 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		1AED0E9D1BEA445D00415A27 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		1AED0EC71BEA451E00415A27 /* MLWaterFallController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLWaterFallController.h; sourceTree = "<group>"; };
-		1AED0EC81BEA451E00415A27 /* MLWaterFallController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLWaterFallController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,15 +189,18 @@
 		1A5C28BA1BEA331B009F140B /* waterFallLayout */ = {
 			isa = PBXGroup;
 			children = (
-				1AED0EC71BEA451E00415A27 /* MLWaterFallController.h */,
-				1AED0EC81BEA451E00415A27 /* MLWaterFallController.m */,
-				1A5C28BD1BEA331B009F140B /* Assets.xcassets */,
-				1A5C28BE1BEA331B009F140B /* LaunchScreen.storyboard */,
+				1A4359061BEAF8330040D00B /* MLClothesViewController.h */,
+				1A4359071BEAF8330040D00B /* MLClothesViewController.m */,
+				1A43590C1BEAFEB00040D00B /* MLWaterFallFlowLayout.h */,
+				1A43590D1BEAFEB00040D00B /* MLWaterFallFlowLayout.m */,
 				1A5C28C01BEA331B009F140B /* Main.storyboard */,
+				1A5C28BE1BEA331B009F140B /* LaunchScreen.storyboard */,
 				1A5C28C21BEA331B009F140B /* Info.plist */,
 				1A5C28C31BEA331B009F140B /* main.m */,
+				1A4359041BEAF3BE0040D00B /* clothes.plist */,
 				1A5C28BB1BEA331B009F140B /* AppDelegate.h */,
 				1A5C28BC1BEA331B009F140B /* AppDelegate.m */,
+				1A5C28BD1BEA331B009F140B /* Assets.xcassets */,
 				1AED0E401BEA445D00415A27 /* Foudation */,
 			);
 			path = waterFallLayout;
@@ -425,6 +433,7 @@
 				1A5C28C51BEA331B009F140B /* Assets.xcassets in Resources */,
 				1AED0EB41BEA445D00415A27 /* MJRefresh.bundle in Resources */,
 				1A5C28C61BEA331B009F140B /* LaunchScreen.storyboard in Resources */,
+				1A4359051BEAF3BE0040D00B /* clothes.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +447,8 @@
 				1AED0EA31BEA445D00415A27 /* NSObject+MJKeyValue.m in Sources */,
 				1AED0EB31BEA445D00415A27 /* MJRefreshStateHeader.m in Sources */,
 				1AED0EA41BEA445D00415A27 /* NSObject+MJProperty.m in Sources */,
+				1A43590E1BEAFEB00040D00B /* MLWaterFallFlowLayout.m in Sources */,
+				1A4359081BEAF8330040D00B /* MLClothesViewController.m in Sources */,
 				1AED0EB81BEA445D00415A27 /* UIView+MJExtension.m in Sources */,
 				1AED0EA21BEA445D00415A27 /* NSObject+MJCoding.m in Sources */,
 				1A5C28C91BEA331B009F140B /* main.m in Sources */,
@@ -472,7 +483,6 @@
 				1AED0EBD1BEA445D00415A27 /* SDWebImageDownloader.m in Sources */,
 				1AED0EA61BEA445D00415A27 /* MJRefreshAutoFooter.m in Sources */,
 				1AED0EA91BEA445D00415A27 /* MJRefreshFooter.m in Sources */,
-				1AED0EC91BEA451E00415A27 /* MLWaterFallController.m in Sources */,
 				1AED0EB01BEA445D00415A27 /* MJRefreshBackStateFooter.m in Sources */,
 				1AED0EBC1BEA445D00415A27 /* SDWebImageDecoder.m in Sources */,
 				1AED0EBB1BEA445D00415A27 /* SDWebImageCompat.m in Sources */,
