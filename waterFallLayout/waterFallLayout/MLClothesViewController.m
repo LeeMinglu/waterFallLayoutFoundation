@@ -21,13 +21,7 @@ static NSString * const reuseIdentifier = @"ClothesCell";
     [super viewDidLoad];
     
     self.collectionView.collectionViewLayout = [[MLWaterFallFlowLayout alloc] init];
-    
-    
-//    
-    // Register cell classes
-//    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
-    
-    // Do any additional setup after loading the view.
+
 }
 
 - (void)didReceiveMemoryWarning {
