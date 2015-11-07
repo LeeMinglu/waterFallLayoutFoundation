@@ -10,6 +10,9 @@
 		1A4359051BEAF3BE0040D00B /* clothes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A4359041BEAF3BE0040D00B /* clothes.plist */; };
 		1A4359081BEAF8330040D00B /* MLClothesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4359071BEAF8330040D00B /* MLClothesViewController.m */; };
 		1A43590E1BEAFEB00040D00B /* MLWaterFallFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A43590D1BEAFEB00040D00B /* MLWaterFallFlowLayout.m */; };
+		1A45772F1BEDBC9300B07095 /* MLClothesViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A45772E1BEDBC9300B07095 /* MLClothesViewCell.m */; };
+		1A4577321BEDBD9400B07095 /* MLClothes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A4577311BEDBD9400B07095 /* MLClothes.m */; };
+		1A4577341BEE0C7F00B07095 /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4577331BEE0C7F00B07095 /* 22.png */; };
 		1A5C28C41BEA331B009F140B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C28BC1BEA331B009F140B /* AppDelegate.m */; };
 		1A5C28C51BEA331B009F140B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A5C28BD1BEA331B009F140B /* Assets.xcassets */; };
 		1A5C28C61BEA331B009F140B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A5C28BE1BEA331B009F140B /* LaunchScreen.storyboard */; };
@@ -65,6 +68,11 @@
 		1A4359071BEAF8330040D00B /* MLClothesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLClothesViewController.m; sourceTree = "<group>"; };
 		1A43590C1BEAFEB00040D00B /* MLWaterFallFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLWaterFallFlowLayout.h; sourceTree = "<group>"; };
 		1A43590D1BEAFEB00040D00B /* MLWaterFallFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLWaterFallFlowLayout.m; sourceTree = "<group>"; };
+		1A45772D1BEDBC9300B07095 /* MLClothesViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLClothesViewCell.h; sourceTree = "<group>"; };
+		1A45772E1BEDBC9300B07095 /* MLClothesViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLClothesViewCell.m; sourceTree = "<group>"; };
+		1A4577301BEDBD9400B07095 /* MLClothes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLClothes.h; sourceTree = "<group>"; };
+		1A4577311BEDBD9400B07095 /* MLClothes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLClothes.m; sourceTree = "<group>"; };
+		1A4577331BEE0C7F00B07095 /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
 		1A5C289F1BEA30E5009F140B /* waterFallLayout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = waterFallLayout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A5C28BB1BEA331B009F140B /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1A5C28BC1BEA331B009F140B /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -191,6 +199,10 @@
 			children = (
 				1A4359061BEAF8330040D00B /* MLClothesViewController.h */,
 				1A4359071BEAF8330040D00B /* MLClothesViewController.m */,
+				1A45772D1BEDBC9300B07095 /* MLClothesViewCell.h */,
+				1A45772E1BEDBC9300B07095 /* MLClothesViewCell.m */,
+				1A4577301BEDBD9400B07095 /* MLClothes.h */,
+				1A4577311BEDBD9400B07095 /* MLClothes.m */,
 				1A43590C1BEAFEB00040D00B /* MLWaterFallFlowLayout.h */,
 				1A43590D1BEAFEB00040D00B /* MLWaterFallFlowLayout.m */,
 				1A5C28C01BEA331B009F140B /* Main.storyboard */,
@@ -199,6 +211,7 @@
 				1A5C28C31BEA331B009F140B /* main.m */,
 				1A4359041BEAF3BE0040D00B /* clothes.plist */,
 				1A5C28BB1BEA331B009F140B /* AppDelegate.h */,
+				1A4577331BEE0C7F00B07095 /* 22.png */,
 				1A5C28BC1BEA331B009F140B /* AppDelegate.m */,
 				1A5C28BD1BEA331B009F140B /* Assets.xcassets */,
 				1AED0E401BEA445D00415A27 /* Foudation */,
@@ -429,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A5C28C81BEA331B009F140B /* Info.plist in Resources */,
+				1A4577341BEE0C7F00B07095 /* 22.png in Resources */,
 				1A5C28C71BEA331B009F140B /* Main.storyboard in Resources */,
 				1A5C28C51BEA331B009F140B /* Assets.xcassets in Resources */,
 				1AED0EB41BEA445D00415A27 /* MJRefresh.bundle in Resources */,
@@ -449,6 +463,7 @@
 				1AED0EA41BEA445D00415A27 /* NSObject+MJProperty.m in Sources */,
 				1A43590E1BEAFEB00040D00B /* MLWaterFallFlowLayout.m in Sources */,
 				1A4359081BEAF8330040D00B /* MLClothesViewController.m in Sources */,
+				1A45772F1BEDBC9300B07095 /* MLClothesViewCell.m in Sources */,
 				1AED0EB81BEA445D00415A27 /* UIView+MJExtension.m in Sources */,
 				1AED0EA21BEA445D00415A27 /* NSObject+MJCoding.m in Sources */,
 				1A5C28C91BEA331B009F140B /* main.m in Sources */,
@@ -474,6 +489,7 @@
 				1AED0EAE1BEA445D00415A27 /* MJRefreshBackGifFooter.m in Sources */,
 				1AED0EBA1BEA445D00415A27 /* SDImageCache.m in Sources */,
 				1AED0EA81BEA445D00415A27 /* MJRefreshComponent.m in Sources */,
+				1A4577321BEDBD9400B07095 /* MLClothes.m in Sources */,
 				1AED0EBF1BEA445D00415A27 /* SDWebImageManager.m in Sources */,
 				1AED0EA11BEA445D00415A27 /* MJType.m in Sources */,
 				1AED0EC51BEA445D00415A27 /* UIImageView+WebCache.m in Sources */,

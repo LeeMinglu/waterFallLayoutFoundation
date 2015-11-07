@@ -16,15 +16,38 @@ static NSUInteger const MLColumnCount = 3;
 //设置行间距
 static CGFloat const MLLineMargin = 10;
 //设置列间距
-static CGFloat const MLColumnMargin = 10;
+static const CGFloat MLColumnMargin = 10;
 //设置边距
-static UIEdgeInsets MLEdgeInsetes = {10,10,10,10};
+static const UIEdgeInsets MLEdgeInsetes = {10,10,10,10};
 
 @interface MLWaterFallFlowLayout ()
+/**
+ *  每列y的最大值
+ */
 @property (nonatomic, strong) NSMutableArray *columinMaxYArray;
+
+/**
+ *  保存每一个cell的属性
+ */
+@property (nonatomic, strong) NSMutableArray *attrsArray;
 @end
 
 @implementation MLWaterFallFlowLayout
+//懒加载最大Y值
+- (NSMutableArray *)columinMaxYArray {
+    if (!_columinMaxYArray) {
+        //[NSMutableArray alloc] init]与[NSMutableArray array]有什么区别? 没有区别
+        _columinMaxYArray = [[NSMutableArray alloc] init];
+    }
+    return _columinMaxYArray;
+}
+//懒加载各个元素的属性数组
+- (NSMutableArray *)attrsArray {
+    if (!_attrsArray) {
+        _attrsArray = [NSMutableArray array];
+    }
+    return _attrsArray;
+}
 
 -(void)prepareLayout {
     [super prepareLayout];
@@ -36,36 +59,48 @@ static UIEdgeInsets MLEdgeInsetes = {10,10,10,10};
         [self.columinMaxYArray addObject:@(0)];
     }
     
+    
+    /**/
+    //设置每个cell的布局属性
+    [self.attrsArray  removeAllObjects];
+    
+    //获得当前cell的数量
+    NSUInteger count = [self.collectionView numberOfItemsInSection:0];
+    
+    //遍历
+    for (int i = 0; i < count; i++) {
+        //设置indexPath
+        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+        //根据indexPath获取属性
+        UICollectionViewLayoutAttributes *attrs = [self  layoutAttributesForItemAtIndexPath:indexPath];
+        [self.attrsArray addObject:attrs];
+    }
+    
+    
 }
 
-//懒加载最大Y值
-- (NSMutableArray *)columinMaxYArray {
-    if (!_columinMaxYArray) {
-        //[NSMutableArray alloc] init]与[NSMutableArray array]有什么区别? 没有区别
-        _columinMaxYArray = [[NSMutableArray alloc] init];
-    }
-    return _columinMaxYArray;
-}
 
 //设置每个cell的布局属性
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
     
-    //定义一个数组
+    //1.定义一个数组
     NSMutableArray *arrayM = [NSMutableArray array];
     
-    //获得collectionView中cell的数量
-    NSUInteger count = [self.collectionView numberOfItemsInSection:0];
+    //2.获得collectionView中cell的数量
+//    NSUInteger count = [self.collectionView numberOfItemsInSection:0];
     
-//    遍历
-    for (int i = 0; i < count; i++) {
-        
-         //设置i位置的indexPath,一定要用[NSIndexPath indexPathForItem:i inSection:0],否则不会出现cell
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
-    
+//   3. 遍历
+    for (int i = 0; i < self.attrsArray.count; i++) {
 //        根据indexPath得到layoutAttributes
-        UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:indexPath];
-    //将布局属性添加到数据中
-        [arrayM addObject:attributes];
+        UICollectionViewLayoutAttributes *attributes = self.attrsArray[i];
+       
+        //如果cell与collectionView进行相交就添加到数组中
+        if (CGRectIntersectsRect(rect, attributes.frame)) {
+
+            //将布局属性添加到数据中
+            [arrayM addObject:attributes];
+        }
+        
     }
 //    返回生成属性的数组
     return arrayM;
@@ -103,9 +138,20 @@ static UIEdgeInsets MLEdgeInsetes = {10,10,10,10};
     self.columinMaxYArray[MLColumnIndex] = @(CGRectGetMaxY(attritures.frame));
     
     return attritures;
+}
+
+#pragma mark 实现内部方法  求出collectionView的contentSize
+- (CGSize)collectionViewContentSize {
+    CGFloat columnMaxY = [self.columinMaxYArray[0] doubleValue];
     
+    for (int i = 1; i < MLColumnCount; i++) {
+        CGFloat currentColumnY = [self.columinMaxYArray[i] doubleValue];
+        if (columnMaxY < currentColumnY) {
+            columnMaxY = currentColumnY;
+        }
+    }
     
-    
+    return CGSizeMake(MLCollectionViewWidth, columnMaxY + MLEdgeInsetes.bottom);
 }
 
 @end

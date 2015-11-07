@@ -8,8 +8,13 @@
 
 #import "MLClothesViewController.h"
 #import "MLWaterFallFlowLayout.h"
+#import "MLClothesViewCell.h"
+#import "MLClothes.h"
+#import "MJExtension.h"
 
 @interface MLClothesViewController ()
+
+@property (nonatomic, strong) NSMutableArray *clothesArray;
 
 @end
 
@@ -17,10 +22,22 @@
 
 static NSString * const reuseIdentifier = @"ClothesCell";
 
+- (NSMutableArray *)clothesArray {
+    if (!_clothesArray) {
+        _clothesArray = [NSMutableArray array];
+    }
+    return _clothesArray;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.collectionView.collectionViewLayout = [[MLWaterFallFlowLayout alloc] init];
+    
+    //加载数据
+    NSArray *array = [MLClothes objectArrayWithFilename:@"clothes.plist"];
+    
+    [self.clothesArray addObjectsFromArray:array];
 
 }
 
@@ -39,14 +56,15 @@ static NSString * const reuseIdentifier = @"ClothesCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return 20;
+    return self.clothesArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    MLClothesViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
-    cell.backgroundColor = [UIColor redColor];
+//    cell.backgroundColor = [UIColor redColor];
+    cell.clothes = self.clothesArray[indexPath.item];
     
     return cell;
 }
