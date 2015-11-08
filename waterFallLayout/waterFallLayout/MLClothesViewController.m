@@ -12,7 +12,7 @@
 #import "MLClothes.h"
 #import "MJExtension.h"
 
-@interface MLClothesViewController ()
+@interface MLClothesViewController ()<MLWaterFallFlowLayoutDelegate>
 
 @property (nonatomic, strong) NSMutableArray *clothesArray;
 
@@ -32,12 +32,19 @@ static NSString * const reuseIdentifier = @"ClothesCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.collectionView.collectionViewLayout = [[MLWaterFallFlowLayout alloc] init];
+    
     
     //加载数据
     NSArray *array = [MLClothes objectArrayWithFilename:@"clothes.plist"];
     
     [self.clothesArray addObjectsFromArray:array];
+    MLWaterFallFlowLayout *layout = [[MLWaterFallFlowLayout alloc] init];
+    
+    self.collectionView.collectionViewLayout = layout;
+    
+    layout.delegate = self;
+    //切换布局
+    
 
 }
 
@@ -58,7 +65,7 @@ static NSString * const reuseIdentifier = @"ClothesCell";
 
     return self.clothesArray.count;
 }
-
+ 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MLClothesViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
@@ -69,6 +76,16 @@ static NSString * const reuseIdentifier = @"ClothesCell";
     return cell;
 }
 
+
+// MARK: 实现MLWaterFallFlowLayout
+- (CGFloat)waterFallFlowLayout:(MLWaterFallFlowLayout *)waterFallFlow heightForRowAtIndexPath:(NSIndexPath *)indexPath withItemWidth:(CGFloat)width {
+    
+    MLClothes *clothes = self.clothesArray[indexPath.item];
+    
+//    根据item的宽度计算
+    return clothes.h * width / clothes.w;
+    
+}
 
 
 @end

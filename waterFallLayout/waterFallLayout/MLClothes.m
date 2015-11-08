@@ -7,6 +7,7 @@
 //
 
 #import "MLClothes.h"
+#import "MJExtension.h"
 
 @implementation MLClothes
 

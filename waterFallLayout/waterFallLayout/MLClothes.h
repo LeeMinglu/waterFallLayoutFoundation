@@ -15,5 +15,6 @@
 @property (nonatomic, assign) CGFloat w;
 @property (nonatomic, copy) NSString *price;
 @property (nonatomic, copy) NSString *img;
+@property (nonatomic, strong) NSArray *clothesArray;
 
 @end

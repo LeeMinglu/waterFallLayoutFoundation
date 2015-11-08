@@ -14,7 +14,7 @@
 //设置每行显示的个数
 static NSUInteger const MLColumnCount = 3;
 //设置行间距
-static CGFloat const MLLineMargin = 10;
+static CGFloat const MLRowMargin = 10;
 //设置列间距
 static const CGFloat MLColumnMargin = 10;
 //设置边距
@@ -30,6 +30,12 @@ static const UIEdgeInsets MLEdgeInsetes = {10,10,10,10};
  *  保存每一个cell的属性
  */
 @property (nonatomic, strong) NSMutableArray *attrsArray;
+
+//声明get方法
+- (CGFloat)rowSpacing;
+- (CGFloat)columnSpacing;
+- (UIEdgeInsets)edgeInsets;
+- (NSInteger)columnCount;
 @end
 
 @implementation MLWaterFallFlowLayout
@@ -128,17 +134,54 @@ static const UIEdgeInsets MLEdgeInsetes = {10,10,10,10};
     CGFloat totalColumnSpace =(MLColumnCount - 1) * MLColumnMargin;
     CGFloat width = (MLCollectionViewWidth - MLEdgeInsetes.right - MLEdgeInsetes.left - totalColumnSpace) / MLColumnCount;
     
-    CGFloat height = 50 +  arc4random() % 150;
+//    CGFloat height = 50 +  arc4random() % 150;
+    CGFloat height = [self.delegate waterFallFlowLayout:self heightForRowAtIndexPath:indexPath withItemWidth:width];
     
     CGFloat x = MLEdgeInsetes.left + MLColumnIndex * (width + MLColumnMargin);
     
-    CGFloat y = destColumnMaxY + MLLineMargin;
+    CGFloat y = destColumnMaxY + MLRowMargin;
     attritures.frame = CGRectMake(x, y, width, height);
     
     self.columinMaxYArray[MLColumnIndex] = @(CGRectGetMaxY(attritures.frame));
     
     return attritures;
 }
+
+// MARK: - 实现get方法
+
+/** 行间距*/
+- (CGFloat)rowSpacing {
+    if ([self.delegate respondsToSelector:@selector(rowSpacingInWaterfallFlowLayout:)]) {
+        return [self.delegate rowSpacingInWaterfallFlowLayout:self];
+    }
+    return MLRowMargin;
+}
+
+/**列间距*/
+- (CGFloat)columnSpacing {
+    if ([self.delegate respondsToSelector:@selector(columnSpacingInWaterfallFlowLayout:)]) {
+        return [self.delegate columnSpacingInWaterfallFlowLayout:self];
+    }
+    return MLColumnMargin;
+}
+
+/**内边距*/
+- (UIEdgeInsets)edgeInsets {
+    if ([self.delegate respondsToSelector:@selector(edgeInsetsInWaterfallFlowLayout:)]) {
+        return [self.delegate edgeInsetsInWaterfallFlowLayout:self];
+    }
+    return MLEdgeInsetes;
+}
+
+/**列的数量*/
+- (NSInteger)columnCount {
+    if ([self.delegate respondsToSelector:@selector(columnCountInWaterfallFlowLayout:)]) {
+          return [self.delegate columnCountInWaterfallFlowLayout:self];
+    }
+    return MLColumnCount;
+}
+
+
 
 #pragma mark 实现内部方法  求出collectionView的contentSize
 - (CGSize)collectionViewContentSize {
@@ -153,5 +196,7 @@ static const UIEdgeInsets MLEdgeInsetes = {10,10,10,10};
     
     return CGSizeMake(MLCollectionViewWidth, columnMaxY + MLEdgeInsetes.bottom);
 }
+
+
 
 @end
