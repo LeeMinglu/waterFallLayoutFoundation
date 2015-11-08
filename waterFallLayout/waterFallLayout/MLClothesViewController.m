@@ -10,6 +10,7 @@
 #import "MLWaterFallFlowLayout.h"
 #import "MLClothesViewCell.h"
 #import "MLClothes.h"
+#import "MJRefresh.h"
 #import "MJExtension.h"
 
 @interface MLClothesViewController ()<MLWaterFallFlowLayoutDelegate>
@@ -38,13 +39,39 @@ static NSString * const reuseIdentifier = @"ClothesCell";
     NSArray *array = [MLClothes objectArrayWithFilename:@"clothes.plist"];
     
     [self.clothesArray addObjectsFromArray:array];
+   
+    //切换布局
     MLWaterFallFlowLayout *layout = [[MLWaterFallFlowLayout alloc] init];
     
     self.collectionView.collectionViewLayout = layout;
+    self.collectionView.backgroundColor = [UIColor grayColor];
     
     layout.delegate = self;
-    //切换布局
     
+//     上拉刷新数据
+    __weak typeof(self) weakSelf = self;
+    self.collectionView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        // 加载数据
+        NSArray *tempArray = [MLClothes objectArrayWithFilename:@"clothes.plist"];
+        [weakSelf.clothesArray insertObjects:tempArray atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, tempArray.count)]];
+        [weakSelf.collectionView reloadData];
+        
+        // 结束刷新
+        [weakSelf.collectionView.header endRefreshing];
+    }];
+    
+    
+//    下拉刷新数据
+    self.collectionView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        //获取数据
+        NSArray *tempArray = [MLClothes objectArrayWithFilename:@"clothes.plist"];
+        
+        [weakSelf.clothesArray addObjectsFromArray:tempArray];
+        
+        [weakSelf.collectionView reloadData];
+        
+        [weakSelf.collectionView.footer endRefreshing];
+    }];
 
 }
 
@@ -54,11 +81,6 @@ static NSString * const reuseIdentifier = @"ClothesCell";
 }
 
 #pragma mark <UICollectionViewDataSource>
-
-//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-//#warning Incomplete implementation, return the number of sections
-//    return 0;
-//}
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
